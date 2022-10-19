@@ -1,0 +1,134 @@
+syntax = "proto3";
+
+service Server
+{
+    rpc getLetters(letterRequest) returns (letterResponse){}
+    rpc getScore(scoreRequest) returns (scoreResponse){}
+    rpc checkWord(wordRequest) returns (wordResponse){}
+    rpc checkDict(dictRequest) returns (dictResponse){}
+    rpc getCurrentState(stateRequest) returns (stateResponse){}
+    rpc gameHasEnded(gameRequest) returns (gameResponse){}
+    rpc hasGameEnded(endRequest) returns (endResponse){}
+    rpc declareWinner(winnerRequest) returns (winnerResponse){}
+    rpc getWinner(getWinnerRequest) returns (getWinnerResponse){}
+    rpc getNumGames(getGameRequest) returns (getGameresponse){}
+    rpc connect(Player) returns (connectResponse) {}
+}
+
+message Player
+{
+    string name = 1;
+    int32 score = 2; 
+}
+
+
+message letterRequest{
+    string empty = 1;
+}
+
+message letterResponse
+{
+    repeated string numbers = 1;
+}
+
+message scoreRequest
+{
+    string input = 1;
+}
+
+message scoreResponse
+{
+    uint32 score = 1;
+}
+
+message wordRequest
+{
+    repeated string num = 1;
+    string input = 2;
+}
+
+message wordResponse
+{
+    string res = 1;
+}
+
+message dictRequest
+{
+    string input = 1;
+}
+
+
+message dictResponse
+{
+    string res = 1;
+}
+
+message connectRequest {
+    Player play = 1;
+ }
+  
+ message connectResponse {
+    string empty = 1;
+ }
+
+ message stateResponse
+ {
+     repeated string players = 1;
+ }
+
+
+ message gameRequest
+ {
+     bool gameOver = 1;
+ }
+ message gameResponse
+ {
+     string empty = 1;
+ }
+
+ message stateRequest
+ {
+    string empty = 1;
+ }
+
+
+ message endRequest
+ {
+     string empty = 1;
+ }
+
+
+ message endResponse
+ {
+     bool gameIsOver = 1;
+ }
+
+ message winnerRequest
+ {
+     string winner = 1;
+ }
+
+ message winnerResponse
+ {
+     string empty = 1;
+ }
+
+ message getWinnerRequest
+ {
+     string empty = 1;
+ }
+
+ message getWinnerResponse
+ {
+     string winner = 1;
+ }
+
+ message getGameRequest
+ {
+    string empty = 1;
+ }
+
+ message getGameresponse
+ {
+    int32 games = 1;
+ }
